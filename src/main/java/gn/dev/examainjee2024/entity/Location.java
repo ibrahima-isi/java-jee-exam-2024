@@ -10,6 +10,11 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long locationID;
+    /**
+     * the status of the entity, if defined to true then the entity will be listed, if not, he will be in archived
+     */
+    @Column(columnDefinition = "boolean default true")
+    private boolean status;
 
     /**
      * Relation to the tenant of the location

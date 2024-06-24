@@ -15,6 +15,11 @@ public class Appartment {
     private String numberOfRoom;
     @Column
     private double surfaceArea;
+    /**
+     * the status of the entity, if defined to true then the entity will be listed, if not, he will be in archived
+     */
+    @Column(columnDefinition = "boolean default true")
+    private boolean status;
 
     /**
      * This is the relation between the appartment and the immeuble, immeuble is so a foreign key
