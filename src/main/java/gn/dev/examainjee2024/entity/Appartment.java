@@ -3,11 +3,12 @@ package gn.dev.examainjee2024.entity;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "appartments")
 public class Appartment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "appartment_id")
     private long appartmentID;
     @Column
     private String appartmentNumber;

@@ -4,10 +4,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "immeubles")
 public class Immeuble {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "immeuble_id")
     private long immeubleID;
     @Column(unique = true, length = 30)
     private String immeubleName;

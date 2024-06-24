@@ -6,23 +6,55 @@ import gn.dev.examainjee2024.entity.Immeuble;
 import gn.dev.examainjee2024.entity.Location;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Appartment DAO implementation class of IAppartment
+ * @author ibrab
+ */
 public class AppartmentDAO implements IAppartment {
-    private EntityManager entityManager;
+    /**
+     * Entity Manager instance of Appartment
+     */
+    private final EntityManager entityManager = DBConnection.getEntityManager();
+    /**
+     * List of appartements
+     */
     private List<Appartment> appartements;
+    /**
+     * Appartment instance, help stock after using id to get appartment
+     */
+    private Appartment appartment;
+
 
     /**
-     * @return
+     * get all appartements from database
+     * @return appartements as List
      */
     @Override
     public List<Appartment> getAppartments() {
-        return List.of();
+        EntityTransaction transaction = entityManager.getTransaction();
+        appartements = new ArrayList<>();
+        try{
+            transaction.begin();
+            appartements = entityManager.createQuery("from Appartment", Appartment.class).getResultList();
+            transaction.commit();
+        }catch (Exception e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }finally {
+            entityManager.close();
+        }
+        return appartements;
     }
 
     /**
-     * @param id
-     * @return
+     * @param id get appartment by id
+     * @return appartment or null
      */
     @Override
     public Appartment getAppartmentById(long id) {
@@ -30,8 +62,9 @@ public class AppartmentDAO implements IAppartment {
     }
 
     /**
-     * @param appartment
-     * @return
+     * add new appartment to database
+     * @param appartment the new appartment to add
+     * @return true if appartment added, false if not
      */
     @Override
     public int addAppartment(Appartment appartment) {

@@ -5,10 +5,11 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Table
+@Table(name = "locations")
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "location_id")
     private long locationID;
     /**
      * the status of the entity, if defined to true then the entity will be listed, if not, he will be in archived
@@ -35,5 +36,5 @@ public class Location {
      */
     @Column
     @Temporal(TemporalType.DATE)
-    private LocalDate locationDate;
+    private Date locationDate;
 }

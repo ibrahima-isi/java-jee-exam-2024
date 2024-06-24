@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
-<!--Set up the hibernate properties-->
+    <!--Set up the hibernate properties-->
     <persistence-unit name="exam_jee">
         <properties>
-<!-- the url of the database-->
+            <!-- the url of the database-->
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/examen_jee"/>
-<!-- the username-->
+            <!-- the username-->
             <property name="javax.persistence.jdbc.user" value="postgres"/>
-<!-- the password-->
+            <!-- the password-->
             <property name="javax.persistence.jdbc.password" value="passer"/>
-<!-- the driver-->
+            <!-- the driver-->
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-<!--Showing sql query : true -->
+            <!--dialect of the database-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <!--Showing sql query : true -->
             <property name="hibernate.show_sql" value="true"/>
-<!-- the Strategy of the database: update | create | auto -->
+            <!-- the Strategy of the database: update | create | auto -->
             <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <!-- use sql comments : true -->
+            <property name="hibernate.use_sql_comments" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>

@@ -5,10 +5,11 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 
 @Entity
-@Table
+@Table(name = "payments")
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_id")
     private long paymentID;
     /**
      * the month that have been paid
