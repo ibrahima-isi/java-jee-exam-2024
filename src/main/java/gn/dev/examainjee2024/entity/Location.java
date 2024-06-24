@@ -1,7 +1,8 @@
 package gn.dev.examainjee2024.entity;
 
 import javax.persistence.*;
-import java.util.Date;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "locations")
@@ -34,6 +35,5 @@ public class Location {
      * The timestamp is on LocalTime so that we can have the hour if needed
      */
     @Column
-    @Temporal(TemporalType.DATE)
-    private Date locationDate;
+    private LocalDate locationDate;
 }
