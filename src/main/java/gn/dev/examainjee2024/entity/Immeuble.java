@@ -1,6 +1,7 @@
 package gn.dev.examainjee2024.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -15,9 +16,10 @@ public class Immeuble {
     @Column
     private String description;
     @ManyToOne
-    @JoinColumn(name = "userID")
-    private User userID;
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @OneToMany(mappedBy = "immeuble")
+    @OneToMany(mappedBy = "immeuble", cascade = CascadeType.ALL)
+    private List<Appartment> appartments;
 
 }
