@@ -1,7 +1,6 @@
 package gn.dev.examainjee2024.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity

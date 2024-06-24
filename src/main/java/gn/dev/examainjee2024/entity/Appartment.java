@@ -10,10 +10,13 @@ public class Appartment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "appartment_id")
     private long appartmentID;
-    @Column
+    @Column(length = 5)
     private String appartmentNumber;
-    @Column
+    @Column(length = 10)
     private String numberOfRoom;
+    /**
+     * The area of the appartments, integer
+     */
     @Column
     private double surfaceArea;
     /**

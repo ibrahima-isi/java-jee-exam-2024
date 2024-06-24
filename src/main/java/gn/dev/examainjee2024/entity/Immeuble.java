@@ -10,11 +10,11 @@ public class Immeuble {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "immeuble_id")
     private long immeubleID;
-    @Column(unique = true, length = 30)
+    @Column(unique = true, length = 50)
     private String immeubleName;
     @Column(length = 50)
     private String immeubleAddress;
-    @Column
+    @Column(length = 150)
     private String description;
 
     /**
