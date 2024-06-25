@@ -11,6 +11,6 @@ public interface ILocation {
     public int updateLocation(Location location);
     public int deleteLocation(long id);
     public User getLocationTenant();
-    public Appartment getLocationAppartment();
+    public Apartment getLocationAppartment();
     public List<Payment> getLocationPayments();
 }

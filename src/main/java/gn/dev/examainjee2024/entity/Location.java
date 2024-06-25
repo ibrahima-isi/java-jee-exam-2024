@@ -25,11 +25,11 @@ public class Location {
     private User user;
 
     /**
-     * Relation to the appartment of the location
+     * Relation to the apartment of the location
      */
     @ManyToOne
     @JoinColumn(name = "appartment_id")
-    private Appartment appartment;
+    private Apartment apartment;
 
     /**
      * The timestamp is on LocalTime so that we can have the hour if needed
