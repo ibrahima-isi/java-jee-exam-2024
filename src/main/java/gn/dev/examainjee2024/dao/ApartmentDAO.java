@@ -22,10 +22,6 @@ public class ApartmentDAO implements IApartment {
      */
     private final EntityManager entityManager = DBConnection.getEntityManager();
     /**
-     * List of apartments
-     */
-    private List<Apartment> apartments;
-    /**
      * Apartment instance, help stock after using id to get apartment
      */
     private Apartment apartment;
@@ -33,7 +29,7 @@ public class ApartmentDAO implements IApartment {
     /**
      * A Logger to log errors and warnings
      */
-    private Logger LOGGER = Logger.getLogger(ApartmentDAO.class.getName());
+    private final Logger LOGGER = Logger.getLogger(ApartmentDAO.class.getName());
 
 
     /**
@@ -42,9 +38,9 @@ public class ApartmentDAO implements IApartment {
      * @author ibrabowe97
      */
     @Override
-    public List<Apartment> getAppartments() {
+    public List<Apartment> getApartments() {
         EntityTransaction transaction = null;
-        apartments = new ArrayList<>();
+        List<Apartment> apartments = new ArrayList<>();
 
         try{
             transaction = entityManager.getTransaction();
@@ -68,7 +64,7 @@ public class ApartmentDAO implements IApartment {
      * @author ibrabowe97
      */
     @Override
-    public Apartment getAppartmentById(long id) {
+    public Apartment getApartmentById(long id) {
         EntityTransaction transaction = null;
         try{
             transaction = entityManager.getTransaction();
@@ -96,7 +92,7 @@ public class ApartmentDAO implements IApartment {
      * @author ibrabowe97
      */
     @Override
-    public int addAppartment(Apartment apartment) {
+    public int addApartment(Apartment apartment) {
         return 0;
     }
 
@@ -106,7 +102,7 @@ public class ApartmentDAO implements IApartment {
      * @author ibrabowe97
      */
     @Override
-    public int updateAppartment(Apartment apartment) {
+    public int updateApartment(Apartment apartment) {
         return 0;
     }
 
@@ -116,7 +112,7 @@ public class ApartmentDAO implements IApartment {
      * @author ibrabowe97
      */
     @Override
-    public int deleteAppartment(long id) {
+    public int deleteApartment(long id) {
         return 0;
     }
 
@@ -126,7 +122,7 @@ public class ApartmentDAO implements IApartment {
      * @author ibrabowe97
      */
     @Override
-    public Immeuble getAppartmentImmeuble() {
+    public Immeuble getApartmentImmeuble() {
         return null;
     }
 
@@ -136,7 +132,7 @@ public class ApartmentDAO implements IApartment {
      * @author ibrabowe97
      */
     @Override
-    public List<Location> getAppartmentLocations() {
+    public List<Location> getApartmentLocations() {
         return List.of();
     }
 }

@@ -31,7 +31,7 @@ public class Immeuble {
     private User user;
 
     /**
-     * Relation to the apartments of the immeuble, delete appartment if immeuble deleted is activated.
+     * Relation to the apartments of the immeuble, delete apartment if immeuble deleted is activated.
      */
     @OneToMany(mappedBy = "immeuble", cascade = CascadeType.ALL)
     private List<Apartment> apartments;

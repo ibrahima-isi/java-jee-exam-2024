@@ -8,10 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Apartment | form</title>
+    <title>Apartment-form</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css">
 </head>
 <body>
     <%@include file="/layout/shared/topbar.jsp"%>
+    <h1>Formulaire d'ajout et modification</h1>
 </body>
 </html>

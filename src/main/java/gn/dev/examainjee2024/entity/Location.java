@@ -28,7 +28,7 @@ public class Location {
      * Relation to the apartment of the location
      */
     @ManyToOne
-    @JoinColumn(name = "appartment_id")
+    @JoinColumn(name = "apartment_id")
     private Apartment apartment;
 
     /**

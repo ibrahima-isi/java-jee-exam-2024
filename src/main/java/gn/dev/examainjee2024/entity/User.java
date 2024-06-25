@@ -27,19 +27,19 @@ public class User {
     private boolean status;
 
     /**
-     * Relation to immeuble
+     * Relation to immeuble, help get all immeubles as a list from the immeuble owner
      */
     @OneToMany(mappedBy = "user")
     private List<Immeuble> immeubles;
 
     /**
-     * Relation to Location
+     * Relation to Location, help get all locations as a list from the location owner
      */
     @OneToMany(mappedBy = "user")
     private List<Location> locations;
 
     /**
-     * Relation to Payment
+     * Relation to Payment, help get all payments as a list from the payment owner
      */
     @OneToMany(mappedBy = "user")
     private List<Payment> payments;
