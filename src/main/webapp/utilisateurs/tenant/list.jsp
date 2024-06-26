@@ -12,6 +12,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css">
 </head>
 <body>
-
+    <h1>Listes des locataires</h1>
 </body>
 </html>

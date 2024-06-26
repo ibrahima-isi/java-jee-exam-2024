@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css">
 </head>
 <body>
+    <h1>Liste des proprietaires</h1>
 
 </body>
 </html>

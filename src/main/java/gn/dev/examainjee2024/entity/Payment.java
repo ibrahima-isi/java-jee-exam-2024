@@ -42,4 +42,75 @@ public class Payment {
     @JoinColumn(name = "location_id")
     private Location location;
 
+    public Payment() {
+    }
+
+    public Payment(Location location, YearMonth month, LocalDate paymentDate, long paymentID, boolean status, User user) {
+        this.location = location;
+        this.month = month;
+        this.paymentDate = paymentDate;
+        this.paymentID = paymentID;
+        this.status = status;
+        this.user = user;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public YearMonth getMonth() {
+        return month;
+    }
+
+    public void setMonth(YearMonth month) {
+        this.month = month;
+    }
+
+    public LocalDate getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(LocalDate paymentDate) {
+        this.paymentDate = paymentDate;
+    }
+
+    public long getPaymentID() {
+        return paymentID;
+    }
+
+    public void setPaymentID(long paymentID) {
+        this.paymentID = paymentID;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                ", paymentID=" + paymentID +
+                "location=" + location +
+                ", month=" + month +
+                ", paymentDate=" + paymentDate +
+                ", status=" + status +
+                ", user=" + user +
+                '}';
+    }
 }

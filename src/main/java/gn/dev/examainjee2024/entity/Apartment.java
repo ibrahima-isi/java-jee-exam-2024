@@ -39,4 +39,83 @@ public class Apartment {
     @OneToMany(mappedBy = "apartment", cascade = CascadeType.ALL)
     private List<Location> locations;
 
+    public Apartment() {
+    }
+
+    public Apartment(long apartmentID, Immeuble immeuble, String apartmentNumber, String numberOfRoom, boolean status, double surfaceArea) {
+        this.apartmentID = apartmentID;
+        this.immeuble = immeuble;
+        this.apartmentNumber = apartmentNumber;
+        this.numberOfRoom = numberOfRoom;
+        this.status = status;
+        this.surfaceArea = surfaceArea;
+    }
+
+    public long getApartmentID() {
+        return apartmentID;
+    }
+
+    public void setApartmentID(long apartmentID) {
+        this.apartmentID = apartmentID;
+    }
+
+    public String getApartmentNumber() {
+        return apartmentNumber;
+    }
+
+    public void setApartmentNumber(String apartmentNumber) {
+        this.apartmentNumber = apartmentNumber;
+    }
+
+    public Immeuble getImmeuble() {
+        return immeuble;
+    }
+
+    public void setImmeuble(Immeuble immeuble) {
+        this.immeuble = immeuble;
+    }
+
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
+    }
+
+    public String getNumberOfRoom() {
+        return numberOfRoom;
+    }
+
+    public void setNumberOfRoom(String numberOfRoom) {
+        this.numberOfRoom = numberOfRoom;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public double getSurfaceArea() {
+        return surfaceArea;
+    }
+
+    public void setSurfaceArea(double surfaceArea) {
+        this.surfaceArea = surfaceArea;
+    }
+
+    @Override
+    public String toString() {
+        return "Apartment{" +
+                "apartmentID=" + apartmentID +
+                ", apartmentNumber='" + apartmentNumber + '\'' +
+                ", numberOfRoom='" + numberOfRoom + '\'' +
+                ", surfaceArea=" + surfaceArea +
+                ", status=" + status +
+                '}';
+    }
+
 }

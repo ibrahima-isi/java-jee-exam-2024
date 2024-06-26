@@ -12,14 +12,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/", "/apartment", "/apartment/add"}, name = "ApartmentServlet")
+@WebServlet(urlPatterns = {"/apartment", "/apartment/add"}, name = "ApartmentServlet")
 public class ApartmentServlet extends HttpServlet {
     private final IApartment apartmentDAO = new ApartmentDAO();
     /**
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
+     * @param req The HTTP request from the client
+     * @param resp The HTTP response from the server
+     * @throws ServletException An exception if anything goes wrong within the servlet
+     * @throws IOException I/O exceptions
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -36,4 +36,66 @@ public class Location {
      */
     @Column
     private LocalDate locationDate;
+
+    public Location() {
+    }
+
+    public Location(Apartment apartment, LocalDate locationDate, long locationID, boolean status, User user) {
+        this.apartment = apartment;
+        this.locationDate = locationDate;
+        this.locationID = locationID;
+        this.status = status;
+        this.user = user;
+    }
+
+    public Apartment getApartment() {
+        return apartment;
+    }
+
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
+    }
+
+    public LocalDate getLocationDate() {
+        return locationDate;
+    }
+
+    public void setLocationDate(LocalDate locationDate) {
+        this.locationDate = locationDate;
+    }
+
+    public long getLocationID() {
+        return locationID;
+    }
+
+    public void setLocationID(long locationID) {
+        this.locationID = locationID;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                ", locationID=" + locationID +
+                "apartment=" + apartment +
+                ", status=" + status +
+                ", user=" + user +
+                ", locationDate=" + locationDate +
+                '}';
+    }
 }
