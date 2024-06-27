@@ -15,8 +15,6 @@
             <property name="javax.persistence.jdbc.password" value="passer"/>
             <!-- the driver-->
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <!--dialect of the database-->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <!--Showing sql query : true -->
             <property name="hibernate.show_sql" value="true"/>
             <!-- the Strategy of the database: update | create | auto -->
