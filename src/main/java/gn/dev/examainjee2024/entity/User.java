@@ -1,6 +1,8 @@
 package gn.dev.examainjee2024.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,38 +13,63 @@ public class User {
     /**
      * Primary key
      */
+    @Setter
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private long userID;
 
+    @Setter
+    @Getter
     @Column(unique = true, length = 50)
     private String userName;
+    @Setter
+    @Getter
     @Column(unique = true, length = 50)
     private String userEmail;
+    @Setter
+    @Getter
     @Column(length = 30)
     private String userPassword;
     /**
      * the status of the entity, if defined to true then the entity will be listed, if not, he will be in archived
      */
+    @Setter
+    @Getter
     @Column(columnDefinition = "boolean default true")
     private boolean status;
 
     /**
+     * the role of the user
+     */
+    @Setter
+    @Getter
+    @ManyToOne
+    @JoinColumn(name = "role_id", columnDefinition = "int default 2")
+    private Role role;
+
+    /**
      * Relation to immeuble, help get all immeubles as a list from the immeuble owner
      */
+    @Setter
+    @Getter
     @OneToMany(mappedBy = "user")
     private List<Immeuble> immeubles;
 
     /**
      * Relation to Location, help get all locations as a list from the location owner
      */
+    @Setter
+    @Getter
     @OneToMany(mappedBy = "user")
     private List<Location> locations;
 
     /**
      * Relation to Payment, help get all payments as a list from the payment owner
      */
+    @Setter
+    @Getter
     @OneToMany(mappedBy = "user")
     private List<Payment> payments;
 
@@ -51,80 +78,7 @@ public class User {
     public User() {
     }
 
-    public User(boolean status, String userEmail, long userID, String userName, String userPassword) {
-        this.status = status;
-        this.userEmail = userEmail;
-        this.userID = userID;
-        this.userName = userName;
-        this.userPassword = userPassword;
-    }
-
     // Getter and setter
-
-
-    public List<Immeuble> getImmeubles() {
-        return immeubles;
-    }
-
-    public void setImmeubles(List<Immeuble> immeubles) {
-        this.immeubles = immeubles;
-    }
-
-    public List<Location> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(List<Location> locations) {
-        this.locations = locations;
-    }
-
-    public List<Payment> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(List<Payment> payments) {
-        this.payments = payments;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public long getUserID() {
-        return userID;
-    }
-
-    public void setUserID(long userID) {
-        this.userID = userID;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
 
     @Override
     public String toString() {

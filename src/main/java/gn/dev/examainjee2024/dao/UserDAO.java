@@ -11,7 +11,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
+import java.io.File;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
 
 public class UserDAO implements IUser {
@@ -20,7 +23,7 @@ public class UserDAO implements IUser {
 
 
     /**
-     * @return
+     * @return a list of User
      */
     @Override
     public List<User> getUsers() {
@@ -43,8 +46,8 @@ public class UserDAO implements IUser {
     }
 
     /**
-     * @param id
-     * @return
+     * @param id the id of the user to get
+     * @return a User instance or null | Throw an EntityNotFoundException
      */
     @Override
     public User getUserById(long id) {
@@ -76,6 +79,13 @@ public class UserDAO implements IUser {
     public long addUser(User user) {
         EntityTransaction entityTransaction = null;
         try {
+            // Assurez-vous que le répertoire existe
+            File logDir = new File("/logs/user");
+            if (!logDir.exists()) {
+                logDir.mkdirs(); // Créez les répertoires manquants
+            }
+            Handler fileHandler = new FileHandler("/logs/user/userLogs.log");
+            LOGGER.addHandler(fileHandler);
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             entityManager.persist(user);
@@ -115,8 +125,8 @@ public class UserDAO implements IUser {
     }
 
     /**
-     * @param id
-     * @return
+     * @param id the id of the user to delete
+     * @return the user id if deleted, 0 if not
      */
     @Override
     public long deleteUser(long id) {
