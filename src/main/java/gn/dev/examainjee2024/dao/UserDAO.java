@@ -1,9 +1,6 @@
 package gn.dev.examainjee2024.dao;
 
 import gn.dev.examainjee2024.dao.interfaces.IUser;
-import gn.dev.examainjee2024.entity.Immeuble;
-import gn.dev.examainjee2024.entity.Location;
-import gn.dev.examainjee2024.entity.Payment;
 import gn.dev.examainjee2024.entity.User;
 import gn.dev.examainjee2024.webServlet.models.UserModel;
 

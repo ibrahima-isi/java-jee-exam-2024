@@ -2,11 +2,9 @@ package gn.dev.examainjee2024.dao.interfaces;
 
 import gn.dev.examainjee2024.entity.Location;
 import gn.dev.examainjee2024.entity.Payment;
-import gn.dev.examainjee2024.entity.Immeuble;
 import gn.dev.examainjee2024.entity.User;
 
 import java.util.List;
-import java.util.Locale;
 
 public interface IPayment {
     public List<Payment> getPayments();

@@ -2,7 +2,6 @@ package gn.dev.examainjee2024.webServlet;
 
 import gn.dev.examainjee2024.dao.ApartmentDAO;
 import gn.dev.examainjee2024.dao.interfaces.IApartment;
-import gn.dev.examainjee2024.entity.Apartment;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,7 +9,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(urlPatterns = {"/apartment", "/apartment/add"}, name = "ApartmentServlet")
 public class ApartmentServlet extends HttpServlet {

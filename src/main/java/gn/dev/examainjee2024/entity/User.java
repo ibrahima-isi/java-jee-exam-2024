@@ -1,6 +1,5 @@
 package gn.dev.examainjee2024.entity;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
