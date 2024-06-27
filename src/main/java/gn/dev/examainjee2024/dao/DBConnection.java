@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 public class DBConnection {
     private  static EntityManagerFactory entityManagerFactory;
 
-    private DBConnection(){}
+    DBConnection(){}
 
     /**
      * Create entity manager factory and return an entity manager from it

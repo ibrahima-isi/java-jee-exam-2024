@@ -1,5 +1,6 @@
 package gn.dev.examainjee2024.webServlet;
 
+import gn.dev.examainjee2024.dao.RoleDAO;
 import gn.dev.examainjee2024.dao.UserDAO;
 import gn.dev.examainjee2024.dao.interfaces.IUser;
 import gn.dev.examainjee2024.entity.Role;
@@ -12,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/user/*", name = "UserServlet")
 public class UserServlet extends HttpServlet {
@@ -39,8 +41,8 @@ public class UserServlet extends HttpServlet {
 
             UserModel userModel = new UserModel();
             userModel.setUsers(userDAO.getUsers());
-            req.setAttribute("users", userModel);
-            req.getRequestDispatcher("/utilisateurs/list.jsp").forward(req, resp);
+            req.setAttribute("userModel", userModel);
+            req.getRequestDispatcher("/utilisateurs/user-list.jsp").forward(req, resp);
         }
         else if (path.equalsIgnoreCase("/user/details")) {
             System.out.println("Entering /user/details block");
@@ -72,6 +74,22 @@ public class UserServlet extends HttpServlet {
         }
         else if(path.equalsIgnoreCase("/user/edit")) {
             System.out.println("Entering /user/edit block");
+            String idparam = req.getParameter("id");
+            if (idparam != null && !idparam.isEmpty()) {
+                try {
+                    int userId = Integer.parseInt(idparam);
+                    User user = userDAO.getUserById(userId);
+                    // retriving all role from the database
+                    RoleDAO roleDAO = new RoleDAO();
+                    List<Role> roles = roleDAO.getRoles();
+                    req.setAttribute("roles", roles);
+
+                    req.setAttribute("user", user);
+                } catch (Exception e) {
+                    System.out.println("Error sur l'id : " + e);
+                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid user ID format");
+                }
+            }
             System.out.println("path : " + path);
             req.getRequestDispatcher("/utilisateurs/edit.jsp").forward(req, resp);
 
@@ -136,9 +154,10 @@ public class UserServlet extends HttpServlet {
      */
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String path = req.getPathInfo();
+        String path = req.getRequestURI();
+        System.out.println("Do put..." + path);
 
-        if (path.equalsIgnoreCase("/update") && req.getMethod().equalsIgnoreCase("PUT")) {
+        if (path.equalsIgnoreCase("/user/update") && req.getMethod().equalsIgnoreCase("PUT")) {
             System.out.println("Entering /user/update block");
 
             String idParam = req.getParameter("id");
@@ -154,7 +173,6 @@ public class UserServlet extends HttpServlet {
                     int role_id = Integer.parseInt(req.getParameter("role_id"));
                     Role role = new Role();
                     role.setId(role_id);
-
 
                     System.out.println(userId);
                     System.out.println(user);

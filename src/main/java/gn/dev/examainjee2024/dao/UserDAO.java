@@ -4,10 +4,7 @@ import gn.dev.examainjee2024.dao.interfaces.IUser;
 import gn.dev.examainjee2024.entity.User;
 import gn.dev.examainjee2024.webServlet.models.UserModel;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceException;
+import javax.persistence.*;
 import java.io.File;
 import java.util.List;
 import java.util.logging.FileHandler;
@@ -143,6 +140,25 @@ public class UserDAO implements IUser {
             LOGGER.severe("Failed to delete user with id : " + id + ", Reason: " +e);
         }
         return 0;
+    }
+
+    public User findByUsername(String username) {
+        try {
+            return entityManager.createQuery("SELECT u FROM User u WHERE u.userEmail = :username", User.class)
+                    .setParameter("username", username)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public boolean authenticate(String username, String password) {
+        User user = findByUsername(username);
+        if (user != null) {
+            // Dans un cas réel, vous devriez utiliser un algorithme de hachage sécurisé
+            return user.getUserPassword().equals(password);
+        }
+        return false;
     }
 
 }

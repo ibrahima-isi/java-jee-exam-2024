@@ -1,4 +1,7 @@
+
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -14,7 +17,6 @@ System.out.println(request.getAttribute("content"));
 <div>
     <!-- Contenu de la page -->
     <jsp:include page="${content}" />
-    <c:out value="${content}" />
 </div>
 <%@include file="shared/footer.jsp"%>
 </body>
